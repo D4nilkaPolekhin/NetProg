@@ -4,7 +4,7 @@ CFLAGS = -std=c++11 -Wall
 
 TARGET = my_program
 
-SRCS = main.cpp
+SRCS = client.cpp
 
 OBJS = $(SRCS:.cpp=.o)
 
