@@ -1,6 +1,2 @@
-*.o
-*.out
-
-server
-
-*~
+*.o main
+*.o main-dbg

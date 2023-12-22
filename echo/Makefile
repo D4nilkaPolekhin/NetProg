@@ -1,13 +1,16 @@
-CC = g++
-CFLAGS = -Wall -std=c++11
-LDFLAGS = -lstdc++
 
-TARGET = server
+.PHONY: all debug 
 
-$(TARGET): server.cpp
-	$(CC) $(CFLAGS) $< -o $@ $(LDFLAGS)
+CXXFLAGS 	  =  -std=c++11 -Wall -DNDEBUG
+EXEC  		=  server
+SOURCE        =  $(wildcard *.cpp) 
 
-.PHONY: clean
+all: debug 
+
+debug: $(EXEC)
+
+$(EXEC): main.cpp
+	g++ $(CXXFLAGS) main.cpp -o $(EXEC) 
 
 clean:
-	rm -f $(TARGET)
+	rm -f $(EXEC) 
