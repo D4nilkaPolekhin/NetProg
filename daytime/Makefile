@@ -1,18 +1,16 @@
-CC = g++
 
-CFLAGS = -std=c++11 -Wall
+.PHONY: all debug 
 
-TARGET = my_program
+CXXFLAGS 	  =  -std=c++11 -Wall -DNDEBUG
+EXEC  		=  client
+SOURCE        =  $(wildcard *.cpp) 
 
-SRCS = client.cpp
+all: debug 
 
-OBJS = $(SRCS:.cpp=.o)
+debug: $(EXEC)
 
-$(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) -o $@ $^
-
-%.o: %.cpp
-	$(CC) $(CFLAGS) -c $< -o $@
+$(EXEC): main.cpp
+	g++ $(CXXFLAGS) main.cpp -o $(EXEC) 
 
 clean:
-	rm -f $(OBJS) $(TARGET)
+	rm -f $(EXEC) 
