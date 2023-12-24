@@ -1,16 +1,13 @@
-
-.PHONY: all debug 
-
-CXXFLAGS 	  =  -std=c++11 -Wall -DNDEBUG
-EXEC  		=  server
-SOURCE        =  $(wildcard *.cpp) 
-
-all: debug 
-
-debug: $(EXEC)
-
-$(EXEC): main.cpp
-	g++ $(CXXFLAGS) main.cpp -o $(EXEC) 
-
+target =  echo
+sources = echo.cpp 
+CC = g++
+CCFlags = -Wall
+LDLIBS = -lcrypto++
+OPT = -Ofast
+all:build
+build:
+	$(CC) $(CCFlags) $(OPT) $(sources) -o $(target) $(LDLIBS)
+dbg:
+	$(CC) -g $(sources) -o $(target)DBG
 clean:
-	rm -f $(EXEC) 
+	rm -f $(target) $(DEBUG_EXEC)
